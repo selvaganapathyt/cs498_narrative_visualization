@@ -1,0 +1,209 @@
+body {
+/* background-color: #2d3436; */
+background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+background-color: black;
+}
+
+select {
+    background-color: #2d3436;
+    color: rgb(249, 166, 85);
+}
+
+#chartTitle {
+    color:rgb(249, 166, 85);
+    /* font-weight: bolder; */
+    /* font-size: large; */
+}
+
+#layoutDiv{
+    width: 100%;
+    height: 98vh;
+}
+    
+#headerDiv {
+    /* border: 1px solid black; */
+    height: 100px;
+}
+
+#headerDiv h1 {
+    color: rgb(249, 166, 85);
+}
+
+#headerDiv section {
+    color: antiquewhite;
+    font-weight: bolder;
+}
+
+        
+#progressDiv {
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
+}
+
+#panelsDiv {
+    width: 100%;
+    height: calc(100% - 120px)
+}
+
+#leftPanelDiv{
+width: 100%;
+height: calc(100% - 120px);
+/* border-right:1px solid darkgrey; */
+}
+
+#leftPanelDiv > div{
+    padding: 10px;
+}
+    
+#chartPanelDiv{
+    /* border: 1px solid black; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.tick text {
+    fill:  darkgrey;
+}
+
+.tick.line {
+    fill:  darkgrey;
+}
+
+
+path.domain {
+    stroke: #aaa;
+}
+
+.axisLabel {
+    fill: darkgrey;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.axis path, .axis line {
+        fill: none;
+        shape-rendering: crispEdges;
+    }
+
+    .x.axis path {
+        display: none;
+    }
+
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+
+
+ .tooltip {
+    width: 170px;
+    padding: 4px 10px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: absolute;
+    background-color: blanchedalmond;
+    font-size: 14px;
+    pointer-events: none;
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -ms-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.tooltip div {
+    margin: 3px 0;
+}
+
+.tooltip-date, .tooltip-likes {
+    font-weight: bold;
+}
+
+.progess-btn button{
+    /* box-shadow:inset 0px -3px 7px 0px #2d3436; */
+	/* background:linear-gradient(to bottom, #2d3436 5%, thistle 100%); */
+    background-color: #463a0f;
+	border-radius:3px;
+	border:1px solid #2d3436;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-family:Arial;
+	font-size:12px;
+    padding:9px 10px;
+    font-weight: bolder;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+
+/* .button:active {
+    background: linear-gradient(to bottom, #2d3436 5%, rgb(238, 191, 191) 100%);
+    box-shadow: 0 5px wheat;
+    transform: translateY(4px);
+    color: white;
+    font-weight: bold;
+  } */
+
+  .button:disabled {
+        background: linear-gradient(to bottom, #2d3436 5%, rgb(12, 12, 12) 100%);
+        color: rgba(236, 234, 195, 0.575);
+        cursor: not-allowed;
+  }
+
+  .currentScene {
+    background: goldenrod !important;
+    box-shadow: 0 5px black;
+    color: white !important; 
+    float: top;
+    
+  }
+
+
+  .annotation {
+    width: 150px;
+    height: 50px;
+    padding: 4px 10px;
+    /* border: 1px solid #aaa; */
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    opacity: 1;
+    position: absolute;
+    background-color: cornsilk;
+    font-size: 14px;
+    pointer-events: none;
+    -webkit-transition: all 0.25s;
+    -moz-transition: all 0.25s;
+    -ms-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    transition: all 0.25s;
+}
+
+.annoLine {
+    stroke: cornsilk;
+}
+
+.leftPanelContent {
+    color: antiquewhite;
+    display: none;
+}
+
+.leftPanelContent h3{
+    color:rgb(249, 166, 85);
+}
+
+.caption {
+    fill: white;
+    font-weight: bold;
+    font-size: 0.7em;
+}
+
+.legend {
+    font-weight: bolder;
+    text-align: left;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+  
+

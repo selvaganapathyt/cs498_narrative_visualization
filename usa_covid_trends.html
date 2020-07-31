@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="covid.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<script>
+    init();
+</script>
+
+ <body>
+
+<div id="layoutDiv">
+        <!-- header -->
+        <div id="headerDiv">
+            <h1> COVID-19 USA Stats & Trends </h1>
+                <section>
+                    <p>
+                        COVID-19 pandemic has affected millions of lives in the  U.S.  Does the current stats and trends show any sign of decreasing cases/deaths ? 
+                    </p>
+                </section>
+        </div>
+        <br>
+        <!-- progress bar-->
+        <div id="progressDiv" class="progess-btn">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <button class="button" id="btnPrev" onclick="drawPrevScene()">&lt;&lt;</button>
+                        <button class="button" id="btn1" onclick="drawScene(1)">1</button>
+                        <button class="button" id="btn2" onclick="drawScene(2)">2</button>
+                        <button class="button" id="btn3" onclick="drawScene(3)">3</button>
+                        <button class="button" id="btn4" onclick="drawScene(4)">4</button>
+                        <button class="button" id="btn5" onclick="drawScene(5)">5</button>
+                        <button class="button" id="btnNext" onclick="drawNextScene()">>></button>
+                    </td>
+                    <td style="width: 30%;">
+                        <h3 id="chartTitle"></h3>
+                    </td>
+                    <td id="statesTd">
+                        <label for="states" style="color:rgb(249, 166, 85);">Select a state:</label>
+
+                        <select name="states" id="states">
+                            <option value="All States">All States</option>
+                        </select>                    
+                    </td>      
+                </tr>              
+            </table>
+        </div>
+    
+        <!-- panels  -->
+        <div id="panelsDiv">
+            <table style="width: 100%; height: 100%; border: tomato;">
+                <tr>
+                    <td style="width: 25%;">
+                        <div id="leftPanelDiv">
+
+                            <div class="leftPanelContent" id="ContentForScene1"> 
+
+                                <section>
+                                    <h3>Non Flat Cumulative cases</h3>
+                                    <p> The graph shows the cumulative confirmed cases trend from late Jan 2020 till July 2020. </p>
+                                    <p> The ongoing COVID-19 pandemic was confirmed to have reached the United States in January 2020. 
+                                        Since then, the trend has been surging and showing <b>no</b> signs of slowing down. </p>
+                                    <p> Even though lockdown has been implemented across different states, it had little impact on controlling the cases  
+                                        as the number of coronavirus cases kept growing. More than 3 million people in the U.S. have tested positive so far...
+                                    </p>
+                                </section>
+                            </div>    
+                            <div class="leftPanelContent" id="ContentForScene2"> 
+
+                                <section>
+                                    <h3>Increase in New Cases</h3>
+                                    <p> Inital wave of coronavirus cases in USA  attained  peak during 1<sup>st</sup> week of April. </p>
+                                    <p> Since then, various measures like <u>lockdown</u> and <u>mandatory masks</u> had brought down the number of cases.</p>
+                                    <p>Even though coronavirus cases across the United States dropped since mid June, several states are still 
+                                        setting distressing records. As states through out the U.S. lift stay-at-home orders, reopen businesses, and relax social distancing measures, 
+                                        this graph shows a increase trend in the COVID-19 cases.
+                                    </p>
+                                </section>
+
+                            </div>    
+
+                            <div class="leftPanelContent" id="ContentForScene3"> 
+
+                                <section>
+                                    <h3>Flattening Death Cases</h3>
+                                    <p>Though Coronavirus cases are increasing, the death cases started to decrease. The first death in the US was reported on February 29, 2020.The country reached 100,000 deaths mark on May 27, 2020. </p>
+                                    <p> Attempts like "Working from home" and  "social distancing" helped to flatten the curve.                                    </p>
+    
+                                </section>
+
+                            </div>    
+
+                            <div class="leftPanelContent" id="ContentForScene4"> 
+
+                                <section>
+                                    <h3>Decreasing Daily Death Cases</h3>
+                                    <p> USA goverment reacted very lately to control the Coronavirus cases. 
+                                        Because of the lack in awareness, a huge surge in death cases was seen between March and April. 
+                                    <p> Since April, various measures like <u>lockdown</u> and <u>mandatory masks</u> had brought down the number of deaths significantly</p>
+                                    <p> Since July, as states through out the U.S. lift stay-at-home orders, reopen businesses, and relax social distancing measures, 
+                                        this graph shows a small increase in the COVID-19 deaths.
+                                    </p>
+                                </section>
+
+                            </div>    
+
+                            <div class="leftPanelContent" id="ContentForScene5"> 
+
+                                <section>
+                                    <h3>Fatality Trend</h3>
+                                    <p>
+                                        Infection Fatality Rate, measured as the ratio between confirmed deaths and confirmed cases is  
+                                        expressed as a percentage and represents a measure of disease severity.</p>
+                                        
+                                    <p>
+                                        Because of the early impact in North Eastern region,  states  New York, New Jersey and Connecticut has the highest fatality rates among other states in the US.
+                                        They all share has high fatality rates which indicates high COVID disease severity.
+                                    </p>
+                                </section>
+
+                            </div>    
+
+                        </div>    
+                    </td>
+                    <td>
+                        <div id="chartPanelDiv">
+                           
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    
+</div>
+
+
+ </body>
+
+</html>
