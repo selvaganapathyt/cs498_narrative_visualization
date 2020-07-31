@@ -11,7 +11,7 @@ var chartTitles = {
     2 : "Daily Cases trend",
     3 : "Cumulative Deaths Trend",
     4 : "Daily Deaths Trend",
-    5 : "Fatality Rate"
+    5 : "Cases Fatality Rate"
 }
 
 /*
@@ -66,7 +66,7 @@ function setSeverity() {
         var fatality_rate = d.fatality_rate;
         var severity;
         if (fatality_rate <= 2) {
-            severity = "Normal";
+            severity = "Low";
         }
         else if (fatality_rate <= 4) {
             severity = "Medium";
@@ -684,7 +684,7 @@ async function drawScene2() {
         // var severity = d3.map(usCovidFatalityData, function(d){return d.severity;}).keys();
 
         var fillColor =  d3.scaleOrdinal()
-        .domain(["Normal", "Medium", "High", "Critical"])
+        .domain(["Low", "Medium", "High", "Critical"])
         .range(["rgb(195, 167, 82)", "rgb(199, 136, 65)", "rgb(183, 78, 58)", "rgb(146, 23, 50)"]);
 
         
@@ -780,7 +780,7 @@ async function drawScene2() {
         var clicked = ""
 
         svg.selectAll("mydots")
-        .data(["Normal", "Medium", "High", "Critical"].reverse())
+        .data(["Low", "Medium", "High", "Critical"].reverse())
         .enter()
         .append("rect")
           .attr("x", width - 120)
@@ -807,7 +807,7 @@ async function drawScene2() {
       
       // Add one dot in the legend for each name.
       svg.selectAll("mylabels")
-        .data(["Normal", "Medium", "High", "Critical"].reverse())
+        .data(["Low", "Medium", "High", "Critical"].reverse())
         .enter()
         .append("text")
         .attr("class", "legend")
@@ -1335,5 +1335,3 @@ function showAnnotationsForScene4(svg, x, y) {
     .attr("stroke-width", 2)
 
 }
-
-
