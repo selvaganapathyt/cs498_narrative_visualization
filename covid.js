@@ -776,6 +776,14 @@ async function drawScene2() {
          // legends
         //  var severity = d3.map(dataFilter, function(d){return d.severity;}).keys();
 
+        svg.append("rect")
+        .attr("x", width - 130)
+        .attr("y", height/2 - 45)
+        .attr("width", 100)
+        .attr("height", 100)
+        .attr("opacity", "0.1")
+        .attr("fill", "white");
+  
         var size = 15;
         var clicked = ""
 
@@ -787,7 +795,8 @@ async function drawScene2() {
           .attr("y", function(d,i){ return height/2 - 30 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
           .attr("width", size)
           .attr("height", size)
-          .style("fill", function(d){ return fillColor(d)})
+          .attr("cursor", "pointer")
+          .style("fill", function(d, i){ return fillColor(d)})
           .on("click", function(d) {
                 d3.selectAll("circle").style("opacity", 1);
                 d3.selectAll(".caption").data(usCovidFatalityData).filter(function(t) { return t.severity == d}).style("opacity", "1");
@@ -797,6 +806,8 @@ async function drawScene2() {
                       .filter(function(e){
                       return e.severity !== d;
                     }).style("opacity", "0.1");
+
+                    d3.selectAll(".caption").data(usCovidFatalityData).filter(function(t) { return t.severity != d}).style("opacity", "0");
                     clicked = d
                   }
                    else{
@@ -833,6 +844,16 @@ async function drawScene2() {
                 d3.selectAll(".caption").data(usCovidFatalityData).style("opacity", "0");
             }
       });
+
+
+
+
+    //   var lb = svg.selectAll("legend-box").data([true]);
+    //   lb.enter().append("rect").classed("legend-box",true);
+    //   var lbbox = li[0][0].getBBox()  
+
+
+
 
     }
 
