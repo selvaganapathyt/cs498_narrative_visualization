@@ -6,7 +6,7 @@ background-color: black;
 
 select {
     background-color: #2d3436;
-    color: rgb(249, 166, 85);
+    color: antiquewhite;
 }
 
 #chartTitle {
@@ -38,6 +38,7 @@ select {
 #progressDiv {
     /* padding-top: 10px;
     padding-bottom: 10px; */
+    /* border : thick solid rgb(83, 212, 71); */
 }
 
 #panelsDiv {
@@ -47,7 +48,9 @@ select {
 
 #leftPanelDiv{
 width: 100%;
-height: calc(100% - 120px);
+height: 100%;
+vertical-align: top;
+/* border : thick solid #0000FF; */
 /* border-right:1px solid darkgrey; */
 }
 
@@ -157,7 +160,7 @@ path.domain {
     box-shadow: 0 5px black;
     color: white !important; 
     float: top;
-    
+    font-size: 16px !important;
   }
 
 
@@ -206,4 +209,6 @@ path.domain {
     cursor: pointer;
 }
   
-
+a {
+    color: burlywood;
+}

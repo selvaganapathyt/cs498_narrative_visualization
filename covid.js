@@ -1335,3 +1335,8 @@ function showAnnotationsForScene4(svg, x, y) {
     .attr("stroke-width", 2)
 
 }
+
+function highlightStateDropdown() {
+    var x = document.getElementById("states").focus();
+}
+
