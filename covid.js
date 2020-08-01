@@ -710,50 +710,7 @@ async function drawScene2() {
             .attr("opacity", "1")
             .call(d3.axisBottom(x));
 
-        var tooltip = d3.select("#chartPanelDiv")
-            .append("div")
-            .attr("class", "tooltip")
-            .style("display", "none");
-    
-         await svg.selectAll("circle")
-         .on("mouseover", function(d) {
 
-            d3.select(this).transition()
-                .duration('100')
-                .attr("r", function(d) { return 4 * parseFloat(d.fatality_rate)});
-
-             var left = x(d.cases) + 100;
-             var top = y(d.fatality_rate) - 30;
-
-             if (width - left <= 30) {
-                left = width - 50;
-                top = top - 30;
-             } 
-
-            tooltip.
-            html("<table><tr><td>State</td><td>:</td><td>" + d.State + "</td></tr><tr><td>Total Cases</td><td>:</td><td>" + d.cases + "</td></tr><tr><td>Total Deaths</td><td>:</td><td>" + d.deaths + "</td></tr><tr><td>Fatality Ratio</td><td>:</td><td>" + d.fatality_rate + "</td></tr><tr><td>Severity</td><td>:</td><td>" + d.severity + "</td></tr><table>")
-            .style("display", "block")
-                .style("left", left + "px")
-                .style("top", top + "px")
-              .transition()
-              .duration(200)
-         })
-         .on("mouseout", function() {
-
-            d3.select(this).transition()
-                .duration('200')
-                .attr("r", function(d) { return 2 * parseFloat(d.fatality_rate)});
-
-            tooltip.transition()
-            .duration(300) // ms
-            .style("display", "none");
-         })         
-         .transition()
-         .duration(2000)
-         .attr("cx", function (d) { return x(d.cases) } )
-         .attr("cy", function (d) { return y(d.fatality_rate)}) 
-         .attr("fill", function(d) { return fillColor(d.severity)})
-         .end();
 
          svg.append("g")
          .selectAll("text")
@@ -769,6 +726,51 @@ async function drawScene2() {
               return y(d.fatality_rate)
             })
          .style("opacity", "0");
+
+         var tooltip = d3.select("#chartPanelDiv")
+         .append("div")
+         .attr("class", "tooltip")
+         .style("display", "none");
+ 
+      await svg.selectAll("circle")
+      .on("mouseover", function(d) {
+
+         d3.select(this).transition()
+             .duration('100')
+             .attr("r", function(d) { return 4 * parseFloat(d.fatality_rate)});
+
+          var left = x(d.cases) + 100;
+          var top = y(d.fatality_rate) - 30;
+
+          if (width - left <= 30) {
+             left = width - 50;
+             top = top - 30;
+          } 
+
+         tooltip.
+         html("<table><tr><td>State</td><td>:</td><td>" + d.State + "</td></tr><tr><td>Total Cases</td><td>:</td><td>" + d.cases + "</td></tr><tr><td>Total Deaths</td><td>:</td><td>" + d.deaths + "</td></tr><tr><td>Fatality Ratio</td><td>:</td><td>" + d.fatality_rate + "</td></tr><tr><td>Severity</td><td>:</td><td>" + d.severity + "</td></tr><table>")
+         .style("display", "block")
+             .style("left", left + "px")
+             .style("top", top + "px")
+           .transition()
+           .duration(200)
+      })
+      .on("mouseout", function() {
+
+         d3.select(this).transition()
+             .duration('200')
+             .attr("r", function(d) { return 2 * parseFloat(d.fatality_rate)});
+
+         tooltip.transition()
+         .duration(300) // ms
+         .style("display", "none");
+      })         
+      .transition()
+      .duration(2000)
+      .attr("cx", function (d) { return x(d.cases) } )
+      .attr("cy", function (d) { return y(d.fatality_rate)}) 
+      .attr("fill", function(d) { return fillColor(d.severity)})
+      .end();
 
          showAnnotationsForScene5(svg, x, y);
 
