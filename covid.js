@@ -1043,7 +1043,7 @@ function showAnnotationsForScene1(svg, x, y) {
         .append("div")
         .attr("id", "annotationDiv2")
         .classed("annotation", true)
-        .text("Cases touched 3 Million even after lockdown")
+        .html("<span>Even after lockdown, Cases touched 3 Million around 1st week of July</span>")
         .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
 
 
@@ -1101,7 +1101,7 @@ function showAnnotationsForScene3(svg, x, y) {
         .append("div")
         .attr("id", "annotationDiv2")
         .classed("annotation", true)
-        .text("Death Cases starting to flatten")
+        .text("Death Cases starting to flatten due to measures(remote-work, wearing masks) enforced by Goverment")
         .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
 
 
@@ -1139,7 +1139,7 @@ function showAnnotationsForScene2(svg, x, y) {
         var annotation1 = d3.select("#chartPanelDiv")
         .append("div")
         .classed("annotation", true)
-        .text("First wave Cases surging between 1st week Of April")
+        .text("First wave Cases surging around 1st week Of April")
         .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
 
 
@@ -1191,7 +1191,7 @@ function showAnnotationsForScene2(svg, x, y) {
         .append("div")
         .attr("id", "annotationDiv2")
         .classed("annotation", true)
-        .html("<span>Cases reducing after measured like <b>Lockdown</b> and <b>Mandatory Masks</b><span>")
+        .html("<span>Cases reducing after measures like Lockdown and Mandatory Masks were put in place.<span>")
         .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
 
 
@@ -1320,7 +1320,7 @@ function showAnnotationsForScene4(svg, x, y) {
     .append("div")
     .attr("id", "annotationDiv2")
     .classed("annotation", true)
-    .text("Bending curve since lockdown and testing surge")
+    .html("<span>Curve bending down since lockdown and testing surge")
     .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
 
 
