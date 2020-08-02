@@ -221,7 +221,7 @@ async function drawScene2() {
     .append("text")             
     .style("text-anchor", "middle")
     .attr("class", "axisLabel")
-    .text("Total Confirmed Cases")
+    .text("Daily Confirmed Cases")
     .attr("transform", "rotate(-90)");
 
    // Render the line
@@ -375,7 +375,7 @@ async function drawScene2() {
         .append("text")             
         .style("text-anchor", "middle")
         .attr("class", "axisLabel")
-        .text("Total Confirmed Cases")
+        .text("Cumulative Death Cases")
         .attr("transform", "rotate(-90)");
 
         // Render the line
@@ -527,7 +527,7 @@ async function drawScene2() {
         .append("text")             
         .style("text-anchor", "middle")
         .attr("class", "axisLabel")
-        .text("Total Confirmed Cases")
+        .text("Daily Death Cases")
         .attr("transform", "rotate(-90)");
     
        // Render the line
@@ -652,7 +652,7 @@ async function drawScene2() {
             "translate(" + (width/2) + " ," + (height + margin.top + 60) + ")")
         .style("text-anchor", "middle")
         .attr("class", "axisLabel")
-        .text("Total Confirmed Cases");
+        .text("Cumulative Confirmed Cases");
 
         // set y axis
         var y = d3.scaleLinear()
@@ -939,7 +939,7 @@ async function drawScene1() {
     .append("text")             
     .style("text-anchor", "middle")
     .attr("class", "axisLabel")
-    .text("Total Confirmed Cases")
+    .text("Cumulative Confirmed Cases")
     .attr("transform", "rotate(-90)");
 
    // Render the line
