@@ -14,14 +14,14 @@
 
 <div id="layoutDiv">
         <!-- header -->
-        <div id="headerDiv">
+        <div id="headerDiv" class="banner">
             <h1> COVID-19  USA  Trends </h1>
                 <section>
                     <h3>
-                        For the last 6 months, &nbsp; the COVID-19 pandemic has affected millions of lives in the  U.S.  Does the current trends show any sign of decreasing cases/deaths ? 
+                        &nbsp; For the last 6 months, &nbsp; the COVID-19 pandemic has affected millions of lives in the  U.S.  Does the current trends show any sign of decreasing cases/deaths ? 
                     </h3>
                 </section>
-                <hr>
+                <!-- <hr> -->
         </div>
         <br>
         <!-- progress bar-->
@@ -29,13 +29,13 @@
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 50%;">
-                        <button class="button" id="btnPrev" onclick="drawPrevScene()">&lt;&lt;</button>
+                        <button class="button" id="btnPrev" onclick="drawPrevScene()">&#x25C2; Next</button>
                         <button class="button" id="btn1" onclick="drawScene(1)">1</button>
                         <button class="button" id="btn2" onclick="drawScene(2)">2</button>
                         <button class="button" id="btn3" onclick="drawScene(3)">3</button>
                         <button class="button" id="btn4" onclick="drawScene(4)">4</button>
                         <button class="button" id="btn5" onclick="drawScene(5)">5</button>
-                        <button class="button" id="btnNext" onclick="drawNextScene()">>></button>
+                        <button class="button" id="btnNext" onclick="drawNextScene()">Next &#x25B8;</button>
                     </td>
                     <td style="width: 30%;">
                         <h3 id="chartTitle"></h3>

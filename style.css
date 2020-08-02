@@ -1,7 +1,23 @@
 body {
 background-color: #2d3436;
-background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
-/* background-color: black; */
+background-image: linear-gradient(315deg, #101213 0%, #000000 74%); 
+}
+
+.banner {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    border-color: rgba(235, 234, 220, 0.575) !important;
+    background-color: rgb(12, 9, 4);
+    -webkit-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    -moz-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    box-shadow: -4px 3px 5px 0px rgba(95, 80, 80, 0.94);    
+  }
+
+.hr {
+    padding: 0px;
+    border-top: 3px solid rgb(249, 166, 85);
+    border-bottom-width: 0px;
 }
 
 select {
@@ -40,6 +56,7 @@ select {
     /* padding-top: 10px;
     padding-bottom: 10px; */
     /* border : thick solid rgb(83, 212, 71); */
+    
 }
 
 #panelsDiv {
@@ -132,7 +149,7 @@ path.domain {
 .progess-btn button{
     /* box-shadow:inset 0px -3px 7px 0px #2d3436; */
 	/* background:linear-gradient(to bottom, #2d3436 5%, thistle 100%); */
-    background-color: #646461;
+    background-color: #2e2b2b;
 	border-radius:3px;
 	border:1px solid #2d3436;
 	display:inline-block;
@@ -143,7 +160,10 @@ path.domain {
     padding:9px 10px;
     font-weight: bolder;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #263666;
+    text-shadow:0px 1px 0px #263666;
+    -webkit-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    -moz-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    box-shadow: -4px 3px 5px 0px rgba(24, 24, 23, 0.99);    
 }
 
 /* .button:active {
@@ -166,6 +186,9 @@ path.domain {
     color: black !important; 
     float: top;
     font-size: 16px !important;
+    -webkit-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    -moz-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    box-shadow: -4px 3px 5px 0px rgba(175, 119, 59, 0.94);    
   }
 
 
@@ -186,6 +209,9 @@ path.domain {
     -ms-transition: all 0.25s;
     -o-transition: all 0.25s;
     transition: all 0.25s;
+    -webkit-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    -moz-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
+    box-shadow: -4px 3px 5px 0px rgba(241, 236, 236, 0.94);    
 }
 
 .annoLine {
@@ -218,8 +244,3 @@ a {
     color: burlywood;
 }
 
-hr {
-    padding: 0px;
-    border-top: 3px solid rgb(249, 166, 85);
-    border-bottom-width: 0px;
-  }
