@@ -5,7 +5,7 @@ var usCovidDailyChngData;
 var usCovidDailyChngDataByState;
 var usStateNames;
 var currentScene = 1;
-var selectedCountry;
+var selectedState;
 var chartTitles = {
     1 : "Cumulative Cases Trend",
     2 : "Daily Cases trend",
@@ -54,7 +54,7 @@ async function init() {
 
     d3.select("#states").on("change", function(d) {
 
-        selectedCountry = d3.select(this).property("value")
+        selectedState = d3.select(this).property("value")
         drawScene(currentScene);
     })
 
@@ -88,7 +88,7 @@ function setSeverity() {
  * check if states filter is selected with default value
  */
 function isAllStateSelected() {
-    return selectedCountry == undefined|| selectedCountry == 'All States';
+    return selectedState == undefined|| selectedState == 'All States';
 }
 
 
@@ -165,7 +165,7 @@ async function drawScene2() {
 
     var dataFilter = usCovidDailyChngData;
     if (!isAllStateSelected()) {
-        dataFilter = usCovidDailyChngDataByState.filter(function(d){return d.State==selectedCountry});
+        dataFilter = usCovidDailyChngDataByState.filter(function(d){return d.State==selectedState});
     }
 
     // add svg
@@ -322,7 +322,7 @@ async function drawScene2() {
     
         var dataFilter = usCovidData;
         if (!isAllStateSelected()) {
-            dataFilter = usCovidDataByState.filter(function(d){return d.State==selectedCountry});
+            dataFilter = usCovidDataByState.filter(function(d){return d.State==selectedState});
         }
     
         // add svg
@@ -476,7 +476,7 @@ async function drawScene2() {
     
         var dataFilter = usCovidDailyChngData;
         if (!isAllStateSelected()) {
-            dataFilter = usCovidDailyChngDataByState.filter(function(d){return d.State==selectedCountry});
+            dataFilter = usCovidDailyChngDataByState.filter(function(d){return d.State==selectedState});
         }
         
         // add svg
@@ -864,7 +864,7 @@ async function drawScene1() {
 
     var dataFilter = usCovidData;
     if (!isAllStateSelected()) {
-        dataFilter = usCovidDataByState.filter(function(d){return d.State==selectedCountry});
+        dataFilter = usCovidDataByState.filter(function(d){return d.State==selectedState});
     }
 
     // add svg
