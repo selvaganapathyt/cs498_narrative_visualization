@@ -11,7 +11,7 @@ var chartTitles = {
     2 : "Daily Cases trend",
     3 : "Cumulative Deaths Trend",
     4 : "Daily Deaths Trend",
-    5 : "Cases Fatality Rate"
+    5 : "Cases Fatality Rate vs Cumulative Confirmed Cases"
 }
 
 
