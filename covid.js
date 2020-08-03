@@ -792,6 +792,9 @@ async function drawScene2() {
           .attr("cursor", "pointer")
           .style("fill", function(d, i){ return fillColor(d)})
           .on("click", function(d) {
+              d3.selectAll(".annotation").remove();
+              d3.selectAll(".annoLine").remove();
+
                 d3.selectAll("circle").style("opacity", 1);
                 d3.selectAll(".caption").data(usCovidFatalityData).filter(function(t) { return t.severity == d}).style("opacity", "1");
 
