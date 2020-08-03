@@ -14,6 +14,7 @@ var chartTitles = {
     5 : "Cases Fatality Rate"
 }
 
+
 /*
 * Load all data
 */
@@ -169,7 +170,7 @@ async function drawScene2() {
 
     // add svg
         // add svg
-        var svg = d3.select("#chartPanelDiv")
+        svg = d3.select("#chartPanelDiv")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -255,8 +256,8 @@ async function drawScene2() {
      .attr("class", "overlay")
      .attr("width", width)
      .attr("height", height)
-     .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
-     .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
+     .on("mouseover", function() {if (currentScene != 2) return; focus.style("display", null); tooltip.style("display", null);  })
+     .on("mouseout", function() {if (currentScene != 2) return;  focus.style("display", "none"); tooltip.style("display", "none"); })
      .on("mousemove", mousemove);
 
   // set tooltips
@@ -282,6 +283,8 @@ async function drawScene2() {
         .attr("class", "tooltip-likes");
 
     function mousemove() {
+        if (currentScene != 2) return;
+
         var x0 = x.invert(d3.mouse(this)[0]);
         var ind = bisectDateForScene1(dataFilter, x0);
         var d0 = dataFilter[ind - 1];
@@ -323,7 +326,7 @@ async function drawScene2() {
         }
     
         // add svg
-        var svg = d3.select("#chartPanelDiv")
+        svg = d3.select("#chartPanelDiv")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -409,8 +412,8 @@ async function drawScene2() {
         .attr("class", "overlay")
         .attr("width", width)
         .attr("height", height)
-        .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
-        .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
+        .on("mouseover", function() { if (currentScene != 3) return; focus.style("display", null); tooltip.style("display", null);  })
+        .on("mouseout", function() { if (currentScene != 3) return; focus.style("display", "none"); tooltip.style("display", "none"); })
         .on("mousemove", mousemove);
 
         // set tooltips
@@ -436,6 +439,8 @@ async function drawScene2() {
             .attr("class", "tooltip-likes");
     
         function mousemove() {
+            if (currentScene != 3) return;
+
             var x0 = x.invert(d3.mouse(this)[0]);
             var ind = bisectDateForScene1(dataFilter, x0);
             var d0 = dataFilter[ind - 1];
@@ -475,7 +480,7 @@ async function drawScene2() {
         }
         
         // add svg
-        var svg = d3.select("#chartPanelDiv")
+        svg = d3.select("#chartPanelDiv")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -562,8 +567,8 @@ async function drawScene2() {
          .attr("class", "overlay")
          .attr("width", width)
          .attr("height", height)
-         .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
-         .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
+         .on("mouseover", function() {if (currentScene != 4) return; focus.style("display", null); tooltip.style("display", null);  })
+         .on("mouseout", function() {if (currentScene != 4) return; focus.style("display", "none"); tooltip.style("display", "none"); })
          .on("mousemove", mousemove);
     
       // set tooltips
@@ -589,6 +594,8 @@ async function drawScene2() {
             .attr("class", "tooltip-likes");
     
         function mousemove() {
+            if (currentScene != 4) return;
+
             var x0 = x.invert(d3.mouse(this)[0]);
             var ind = bisectDateForScene1(dataFilter, x0);
             var d0 = dataFilter[ind - 1];
@@ -623,7 +630,7 @@ async function drawScene2() {
         width = document.getElementById("chartPanelDiv").offsetWidth - margin.left - margin.right,
         height = 600 - margin.top - margin.bottom;
 
-        var svg = d3.select("#chartPanelDiv")
+        svg = d3.select("#chartPanelDiv")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -675,22 +682,11 @@ async function drawScene2() {
         .text("Fatality Rate")
         .attr("transform", "rotate(-90)");          
     
-        // var fillColor =  d3.scaleQuantize()
-        // .domain([0, d3.max(usCovidFatalityData, function(d) { 
-        //     return parseFloat(d.fatality_rate);
-        // })])
-        // .range(d3.quantize(d3.interpolateHcl("#f4e153", "hsla(7, 100%, 41%, 1)"), 5))
-
-        // var severity = d3.map(usCovidFatalityData, function(d){return d.severity;}).keys();
-
         var fillColor =  d3.scaleOrdinal()
         .domain(["Low", "Medium", "High", "Critical"])
         .range(["rgb(195, 167, 82)", "rgb(199, 136, 65)", "rgb(183, 78, 58)", "rgb(146, 23, 50)"]);
 
-        
-
          // render the scatter plot
-
          svg.append("g")
          .selectAll("circle")
          .data(usCovidFatalityData)
@@ -734,7 +730,7 @@ async function drawScene2() {
  
       await svg.selectAll("circle")
       .on("mouseover", function(d) {
-
+        if (currentScene != 5) return;
          d3.select(this).transition()
              .duration('100')
              .attr("r", function(d) { return 4 * parseFloat(d.fatality_rate)});
@@ -756,7 +752,7 @@ async function drawScene2() {
            .duration(200)
       })
       .on("mouseout", function() {
-
+        if (currentScene != 5) return;
          d3.select(this).transition()
              .duration('200')
              .attr("r", function(d) { return 2 * parseFloat(d.fatality_rate)});
@@ -773,10 +769,6 @@ async function drawScene2() {
       .end();
 
          showAnnotationsForScene5(svg, x, y);
-
-
-         // legends
-        //  var severity = d3.map(dataFilter, function(d){return d.severity;}).keys();
 
         svg.append("rect")
         .attr("x", width - 130)
@@ -847,16 +839,6 @@ async function drawScene2() {
             }
       });
 
-
-
-
-    //   var lb = svg.selectAll("legend-box").data([true]);
-    //   lb.enter().append("rect").classed("legend-box",true);
-    //   var lbbox = li[0][0].getBBox()  
-
-
-
-
     }
 
     // identify the position
@@ -886,7 +868,7 @@ async function drawScene1() {
     }
 
     // add svg
-    var svg = d3.select("#chartPanelDiv")
+    svg = d3.select("#chartPanelDiv")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -973,8 +955,9 @@ async function drawScene1() {
         .attr("class", "overlay")
         .attr("width", width)
         .attr("height", height)
-        .on("mouseover", function() { focus.style("display", null); tooltip.style("display", null);  })
-        .on("mouseout", function() { focus.style("display", "none"); tooltip.style("display", "none"); })
+        .on("mouseover", function() { if (currentScene != 1) return;
+            focus.style("display", null); tooltip.style("display", null);  })
+        .on("mouseout", function() { if (currentScene != 1) return; focus.style("display", "none"); tooltip.style("display", "none"); })
         .on("mousemove", mousemove);
 
      // set tooltips
@@ -1000,6 +983,8 @@ async function drawScene1() {
         .attr("class", "tooltip-likes");
    
     function mousemove() {
+        if (currentScene != 1) return;
+
         var x0 = x.invert(d3.mouse(this)[0]);
         var ind = bisectDateForScene1(dataFilter, x0);
         var d0 = dataFilter[ind - 1];
@@ -1023,6 +1008,25 @@ async function drawScene1() {
 
 }
 
+function drawAnnotation(annotationConfig) {
+
+        var annotation1 = d3.select("#chartPanelDiv")
+        .append("div")
+        .classed("annotation", true)
+        .html(annotationConfig.caption)
+        .attr("style", "left:" + annotationConfig.xPos + "px;top:" + annotationConfig.yPos + "px;");
+
+        svg.append("g")
+        .attr("transform", annotationConfig.translateValue == undefined|| annotationConfig.translateValue.length == 0  ? "translate(0,0)" : annotationConfig.translateValue)
+        .append("line")
+        .attr("x1", annotationConfig.lx1Pos)
+        .attr("y1", annotationConfig.ly1Pos)
+        .attr("x2", annotationConfig.lx2Pos)
+        .attr("y2", annotationConfig.ly2Pos)
+        .attr("class", "annoLine")
+        .attr("stroke-width", 2)
+}
+
 
 function showAnnotationsForScene1(svg, x, y) {
 
@@ -1036,22 +1040,8 @@ function showAnnotationsForScene1(svg, x, y) {
         var xPos = xPosRaw + 100;
         var yPos = yPosRaw - 200;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .classed("annotation", true)
-        .text("Cases started on Jan 21st 2020")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-        d3.select("svg").append("g")
-        .attr("transform", "translate(0,0)")
-        .append("line")
-        .attr("x1", xPos + 100)
-        .attr("y1", yPos)
-        .attr("x2", xPos)
-        .attr("y2", yPosRaw)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:"Cases started on Jan 21st 2020", lx1Pos:xPos, ly1Pos:yPos, lx2Pos:xPos, ly2Pos:yPosRaw};
+        drawAnnotation(annotationConfig);
 
 
         // set annotation
@@ -1062,23 +1052,12 @@ function showAnnotationsForScene1(svg, x, y) {
         var xPos = xPosRaw - 100;
         var yPos = yPosRaw - 100;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .attr("id", "annotationDiv2")
-        .classed("annotation", true)
-        .html("<span>Even after lockdown, Cases touched 3 Million around 1st week of July</span>")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
+        var annoText = "<span>Even after lockdown, Cases touched 3 Million around 1st week of July</span>";
+        // drawAnnotation(xPos, yPos, annoText, -100, -100, 1, 1);
 
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-100, ly1Pos:-100, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+        drawAnnotation(annotationConfig);
 
-        svg.append("g")
-        .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-        .append("line")
-        .attr("x1", -100)
-        .attr("y1", -100)
-        .attr("x2", 1) // added width of the rect to x 
-        .attr("y2", 1)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)
 
 }
 
@@ -1094,23 +1073,9 @@ function showAnnotationsForScene3(svg, x, y) {
         var xPos = xPosRaw + 100;
         var yPos = yPosRaw - 200;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .classed("annotation", true)
-        .text("First death reported on Feb 29th 2020")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-        d3.select("svg").append("g")
-        .attr("transform", "translate(0,0)")
-        .append("line")
-        .attr("x1", xPos + 100)
-        .attr("y1", yPos)
-        .attr("x2", xPos)
-        .attr("y2", yPosRaw)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)
-
+        var annoText = "<span>First death reported on Feb 29th 2020<span>";
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:xPos, ly1Pos:yPos, lx2Pos:xPos, ly2Pos:yPosRaw};
+        drawAnnotation(annotationConfig);
 
         // set annotation
         var flatteningData = usCovidData[145];
@@ -1120,23 +1085,9 @@ function showAnnotationsForScene3(svg, x, y) {
         var xPos = xPosRaw - 100;
         var yPos = yPosRaw - 100;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .attr("id", "annotationDiv2")
-        .classed("annotation", true)
-        .text("Death Cases starting to flatten due to measures(remote-work, wearing masks) enforced by Goverment")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-        svg.append("g")
-        .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-        .append("line")
-        .attr("x1", -100)
-        .attr("y1", -100)
-        .attr("x2", 1) // added width of the rect to x 
-        .attr("y2", 1)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)
+        var annoText = "<span>Death Cases starting to flatten due to measures(remote-work, wearing masks) enforced by Goverment<span>";
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-100, ly1Pos:-100, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+        drawAnnotation(annotationConfig);
 
 }
 
@@ -1159,23 +1110,9 @@ function showAnnotationsForScene2(svg, x, y) {
         var xPos = xPosRaw - 100;
         var yPos = yPosRaw - 100;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .classed("annotation", true)
-        .text("First wave Cases surging around 1st week Of April")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-        svg.append("g")
-        .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-        .append("line")
-        .attr("x1", -100)
-        .attr("y1", -100)
-        .attr("x2", 1) // added width of the rect to x 
-        .attr("y2", 1)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)
-
+        var annoText = "First wave Cases surging around 1st week Of April";
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-100, ly1Pos:-100, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+        drawAnnotation(annotationConfig);
 
         // set annotation
         var spikeAfterReopening = usCovidDailyChngData[162];
@@ -1185,23 +1122,9 @@ function showAnnotationsForScene2(svg, x, y) {
         var xPos = xPosRaw - 100;
         var yPos = yPosRaw - 100;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .attr("id", "annotationDiv2")
-        .classed("annotation", true)
-        .text("Cases spiking again as different States Reopening since June 21st")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-        svg.append("g")
-        .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-        .append("line")
-        .attr("x1", -100)
-        .attr("y1", -100)
-        .attr("x2", 1) // added width of the rect to x 
-        .attr("y2", 1)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)
+        var annoText = "Cases spiking again as different States Reopening since June 21st";
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-100, ly1Pos:-100, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+        drawAnnotation(annotationConfig);
 
         var spikeAfterReopening = usCovidDailyChngData[143];
         var xPosRaw = x(d3.timeParse("%Y-%m-%d")(spikeAfterReopening.date));
@@ -1210,23 +1133,9 @@ function showAnnotationsForScene2(svg, x, y) {
         var xPos = xPosRaw - 90;
         var yPos = yPosRaw - 100;
 
-        var annotation1 = d3.select("#chartPanelDiv")
-        .append("div")
-        .attr("id", "annotationDiv2")
-        .classed("annotation", true)
-        .html("<span>Cases reducing after measures like Lockdown and Mandatory Masks were put in place.<span>")
-        .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-        svg.append("g")
-        .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-        .append("line")
-        .attr("x1", -100)
-        .attr("y1", -100)
-        .attr("x2", 1) // added width of the rect to x 
-        .attr("y2", 1)
-        .attr("class", "annoLine")
-        .attr("stroke-width", 2)        
+        var annoText = "<span>Cases reducing after measures like Lockdown and Mandatory Masks were put in place.<span>";
+        annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-100, ly1Pos:-100, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+        drawAnnotation(annotationConfig);
 }
 
 /**
@@ -1247,23 +1156,9 @@ function showAnnotationsForScene5(svg, x, y) {
     var xPos = xPosRaw;
     var yPos = yPosRaw - 150;
 
-    var annotation1 = d3.select("#chartPanelDiv")
-    .append("div")
-    .classed("annotation", true)
-    .text("New York having higher fatality rate has most no of cases")
-    .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-    svg.append("g")
-    .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-    .append("line")
-    .attr("x1", 0)
-    .attr("y1", -100)
-    .attr("x2", 0) // added width of the rect to x 
-    .attr("y2", -50)
-    .attr("class", "annoLine")
-    .attr("stroke-width", 2)
-
+    var annoText = "New York  with most no of cases, has higher fatality rate";
+    annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:0, ly1Pos:-100, lx2Pos:0, ly2Pos:-50, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+    drawAnnotation(annotationConfig);
 
     // set annotation
     var Connecticut = usCovidFatalityData[9];
@@ -1273,23 +1168,9 @@ function showAnnotationsForScene5(svg, x, y) {
     var xPos = xPosRaw;
     var yPos = yPosRaw - 100;
 
-    var annotation1 = d3.select("#chartPanelDiv")
-    .append("div")
-    .attr("id", "annotationDiv2")
-    .classed("annotation", true)
-    .text("Connecticut has the highest fatality rate of 9%")
-    .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-    svg.append("g")
-    .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-    .append("line")
-    .attr("x1", 0)
-    .attr("y1", -100)
-    .attr("x2", 1) // added width of the rect to x 
-    .attr("y2", -20)
-    .attr("class", "annoLine")
-    .attr("stroke-width", 2)
+    var annoText = "Connecticut has the highest fatality rate of 9%";
+    annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:0, ly1Pos:-100, lx2Pos:1, ly2Pos:-20, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+    drawAnnotation(annotationConfig);
 
 }
 
@@ -1313,23 +1194,9 @@ function showAnnotationsForScene4(svg, x, y) {
     var xPos = xPosRaw - 100;
     var yPos = yPosRaw - 100;
 
-    var annotation1 = d3.select("#chartPanelDiv")
-    .append("div")
-    .classed("annotation", true)
-    .text("Deaths surging before lockdown and awareness.")
-    .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-    svg.append("g")
-    .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-    .append("line")
-    .attr("x1", -100)
-    .attr("y1", -100)
-    .attr("x2", 1) // added width of the rect to x 
-    .attr("y2", 1)
-    .attr("class", "annoLine")
-    .attr("stroke-width", 2)
-
+    var annoText = "Deaths surging before lockdown and awareness.";
+    annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-100, ly1Pos:-100, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+    drawAnnotation(annotationConfig);
 
     // set annotation
     var spikeAfterReopening = usCovidDailyChngData[142];
@@ -1339,23 +1206,9 @@ function showAnnotationsForScene4(svg, x, y) {
     var xPos = xPosRaw - 30;
     var yPos = yPosRaw - 200;
 
-    var annotation1 = d3.select("#chartPanelDiv")
-    .append("div")
-    .attr("id", "annotationDiv2")
-    .classed("annotation", true)
-    .html("<span>Curve bending down since lockdown and testing surge")
-    .attr("style", "left:" + xPos + "px;top:" + yPos + "px;");
-
-
-    svg.append("g")
-    .attr("transform", "translate("+xPosRaw+","+yPosRaw+")")
-    .append("line")
-    .attr("class", "annoLine")
-    .attr("x1", -30)
-    .attr("y1", -200)
-    .attr("x2", 1) // added width of the rect to x 
-    .attr("y2", 1)
-    .attr("stroke-width", 2)
+    var annoText = "<span>Curve bending down since lockdown and testing surge</span>";
+    annotationConfig = {xPos:xPos, yPos:yPos, caption:annoText, lx1Pos:-30, ly1Pos:-200, lx2Pos:1, ly2Pos:1, translateValue:"translate("+xPosRaw+","+yPosRaw+")"};
+    drawAnnotation(annotationConfig);
 
 }
 
