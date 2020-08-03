@@ -212,7 +212,14 @@ path.domain {
     -webkit-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
     -moz-box-shadow: -4px 3px 5px 0px rgba(0,0,0,0.94);
     box-shadow: -4px 3px 5px 0px rgba(241, 236, 236, 0.94);    
+    animation: blinker 1s linear 3;
 }
+
+@keyframes blinker{
+    50% {
+     background-color: rgb(231, 34, 50);
+    }
+  }
 
 .annoLine {
     stroke: cornsilk;
